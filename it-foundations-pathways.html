@@ -3,100 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Foundations & Career Pathways: A Practical Guide</title>
+    <title>IT Foundations \& Career Pathways: A Practical Guide</title>
     <style>
         * { box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #24292f;
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 45px 30px;
-            background-color: #ffffff;
+            line-height: 1.6; color: #24292f;
+            max-width: 980px; margin: 0 auto; padding: 45px 30px; background-color: #ffffff;
         }
-        h1, h2, h3, h4, h5, h6 {
-            margin-top: 24px;
-            margin-bottom: 16px;
-            font-weight: 600;
-            line-height: 1.25;
-        }
+        h1, h2, h3, h4, h5, h6 { margin-top: 24px; margin-bottom: 16px; font-weight: 600; line-height: 1.25; }
         h1 { font-size: 2em; border-bottom: 1px solid #d0d7de; padding-bottom: 0.3em; }
         h2 { font-size: 1.5em; border-bottom: 1px solid #d0d7de; padding-bottom: 0.3em; }
-        h3 { font-size: 1.25em; }
-        h4 { font-size: 1em; }
-        h5 { font-size: 0.875em; }
-        h6 { font-size: 0.85em; color: #656d76; }
+        h3 { font-size: 1.25em; } h4 { font-size: 1em; } h5 { font-size: 0.875em; } h6 { font-size: 0.85em; color: #656d76; }
         p { margin-top: 0; margin-bottom: 16px; }
-        a { color: #0969da; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        code {
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 0.85em;
-            padding: 0.2em 0.4em;
-            background-color: rgba(175, 184, 193, 0.2);
-            border-radius: 6px;
-        }
-        pre {
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 0.85em;
-            line-height: 1.45;
-            background-color: #f6f8fa;
-            border-radius: 6px;
-            padding: 16px;
-            overflow: auto;
-            margin-top: 0;
-            margin-bottom: 16px;
-        }
+        a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+        code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; font-size: 0.85em; padding: 0.2em 0.4em; background-color: rgba(175, 184, 193, 0.2); border-radius: 6px; }
+        pre { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; font-size: 0.85em; line-height: 1.45; background-color: #f6f8fa; border-radius: 6px; padding: 16px; overflow: auto; margin-top: 0; margin-bottom: 16px; }
         pre code { padding: 0; background-color: transparent; border-radius: 0; }
         .highlight { background-color: #f6f8fa; border-radius: 6px; padding: 16px; overflow: auto; }
         blockquote { margin: 0; padding: 0 1em; color: #656d76; border-left: 0.25em solid #d0d7de; }
-        blockquote > :first-child { margin-top: 0; }
-        blockquote > :last-child { margin-bottom: 0; }
+        blockquote > :first-child { margin-top: 0; } blockquote > :last-child { margin-bottom: 0; }
         table { border-collapse: collapse; width: 100%; margin-bottom: 16px; display: block; overflow: auto; }
-        th, td { border: 1px solid #d0d7de; padding: 6px 13px; }
-        th { background-color: #f6f8fa; font-weight: 600; }
-        tr:nth-child(2n) { background-color: #f6f8fa; }
-        ul, ol { padding-left: 2em; margin-top: 0; margin-bottom: 16px; }
-        li { margin-bottom: 0.25em; }
-        li > p { margin-bottom: 0; }
-        li + li { margin-top: 0.25em; }
-        .task-list-item { list-style-type: none; }
-        .task-list-item input { margin-right: 0.5em; vertical-align: middle; }
+        th, td { border: 1px solid #d0d7de; padding: 6px 13px; } th { background-color: #f6f8fa; font-weight: 600; } tr:nth-child(2n) { background-color: #f6f8fa; }
+        ul, ol { padding-left: 2em; margin-top: 0; margin-bottom: 16px; } li { margin-bottom: 0.25em; } li > p { margin-bottom: 0; } li + li { margin-top: 0.25em; }
+        .task-list-item { list-style-type: none; } .task-list-item input { margin-right: 0.5em; vertical-align: middle; }
         hr { height: 0.25em; padding: 0; margin: 24px 0; background-color: #d0d7de; border: 0; }
         img { max-width: 100%; box-sizing: content-box; background-color: #ffffff; }
-        .toc {
-            background-color: #f6f8fa;
-            border-radius: 6px;
-            padding: 16px;
-            margin-bottom: 24px;
-        }
-        .toc ul { list-style-type: none; padding-left: 1.5em; }
-        .toc li { margin: 4px 0; }
-        .toc a { text-decoration: none; }
-        .toc a:hover { text-decoration: underline; }
-        .admonition {
-            border-left: 4px solid #0969da;
-            background-color: #f6f8fa;
-            padding: 12px 16px;
-            margin: 16px 0;
-            border-radius: 0 6px 6px 0;
-        }
+        .toc { background-color: #f6f8fa; border-radius: 6px; padding: 16px; margin-bottom: 24px; }
+        .toc ul { list-style-type: none; padding-left: 1.5em; } .toc li { margin: 4px 0; } .toc a { text-decoration: none; } .toc a:hover { text-decoration: underline; }
+        .admonition { border-left: 4px solid #0969da; background-color: #f6f8fa; padding: 12px 16px; margin: 16px 0; border-radius: 0 6px 6px 0; }
         .admonition-title { font-weight: 600; margin-bottom: 8px; }
-        h1 a.anchor, h2 a.anchor, h3 a.anchor, h4 a.anchor, h5 a.anchor, h6 a.anchor {
-            display: inline-block; width: 16px; height: 16px; margin-left: -20px; padding-right: 4px;
-            vertical-align: middle; opacity: 0; background-repeat: no-repeat; background-position: center; background-size: 16px;
-        }
+        h1 a.anchor, h2 a.anchor, h3 a.anchor, h4 a.anchor, h5 a.anchor, h6 a.anchor { display: inline-block; width: 16px; height: 16px; margin-left: -20px; padding-right: 4px; vertical-align: middle; opacity: 0; background-repeat: no-repeat; background-position: center; background-size: 16px; }
         h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor { opacity: 1; }
-        kbd {
-            display: inline-block; padding: 2px 6px;
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 0.75em; color: #24292f; background-color: #f6f8fa;
-            border: 1px solid #d0d7de; border-radius: 6px; box-shadow: inset 0 -1px 0 #d0d7de;
-        }
-        dl { margin-bottom: 16px; }
-        dt { font-weight: 600; margin-top: 12px; }
-        dd { margin-left: 16px; margin-bottom: 8px; }
+        kbd { display: inline-block; padding: 2px 6px; font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; font-size: 0.75em; color: #24292f; background-color: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; box-shadow: inset 0 -1px 0 #d0d7de; }
+        dl { margin-bottom: 16px; } dt { font-weight: 600; margin-top: 12px; } dd { margin-left: 16px; margin-bottom: 8px; }
     </style>
 </head>
 <body>
@@ -138,10 +78,10 @@
 </ul>
 </li>
 <li><a href="#7-30-day-starter-plans-by-pathway">7. 30-Day Starter Plans by Pathway</a><ul>
-<li><a href="#cloud-platform-engineering">Cloud &amp; Platform Engineering</a></li>
+<li><a href="#cloud-platform-engineering-multi-cloud-aws-azure-gcp">Cloud &amp; Platform Engineering (Multi-Cloud: AWS / Azure / GCP)</a></li>
 <li><a href="#backend-systems-engineering">Backend &amp; Systems Engineering</a></li>
 <li><a href="#data-engineering">Data Engineering</a></li>
-<li><a href="#cybersecurity">Cybersecurity</a></li>
+<li><a href="#cybersecurity-multi-cloud-focus">Cybersecurity (Multi-Cloud Focus)</a></li>
 <li><a href="#full-stack-product-engineering">Full-Stack Product Engineering</a></li>
 </ul>
 </li>
@@ -331,7 +271,7 @@
 </tr>
 <tr>
 <td><strong>Cert Value</strong></td>
-<td>High (AWS/Azure/GCP, CKAD)</td>
+<td>High (AWS SA/SAA/SOA, Azure AZ-104/305, GCP Cloud Architect, CKAD)</td>
 <td>Medium (architecture)</td>
 <td>Medium (cloud, dbt)</td>
 <td><strong>Very High</strong> (CISSP, OSCP, cloud sec)</td>
@@ -417,10 +357,10 @@
 <tbody>
 <tr>
 <td><strong>Cloud/Platform</strong></td>
-<td>Terraform: VPC + EC2 + RDS</td>
-<td>EKS/GKE cluster + ArgoCD + monitoring</td>
-<td>Multi-env platform (dev/staging/prod) with self-service API</td>
-<td>Custom operator / provider / policy engine</td>
+<td>Terraform: 3-tier network — <strong>AWS</strong>: VPC+IGW+NAT; <strong>Azure</strong>: VNet+NAT; <strong>GCP</strong>: VPC+Cloud NAT</td>
+<td>Managed K8s + GitOps — <strong>AWS</strong>: EKS+ArgoCD; <strong>Azure</strong>: AKS+Flux; <strong>GCP</strong>: GKE+Config Sync</td>
+<td>Multi-env platform (dev/staging/prod) with self-service API — deploy to 2+ clouds</td>
+<td>Custom operator / provider / policy engine (e.g., Cluster API provider, Crossplane composition)</td>
 </tr>
 <tr>
 <td><strong>Backend/Systems</strong></td>
@@ -431,9 +371,9 @@
 </tr>
 <tr>
 <td><strong>Data Engineering</strong></td>
-<td>ELT pipeline: API → S3 → Snowflake</td>
+<td>ELT pipeline: API → S3/ADLS/GCS → Snowflake/BigQuery/Synapse</td>
 <td>dbt models + tests + CI + documentation</td>
-<td>Streaming pipeline: Kafka → Flink → Iceberg</td>
+<td>Streaming pipeline: Kafka → Flink/Spark → Iceberg/Delta</td>
 <td>ML feature store / real-time analytics dashboard</td>
 </tr>
 <tr>
@@ -611,7 +551,7 @@
 <tbody>
 <tr>
 <td><strong>Systems</strong></td>
-<td><code>stress-ng</code> on EC2; compare cgroups vs namespaces</td>
+<td><code>stress-ng</code> on EC2/VM/Compute; compare cgroups vs namespaces</td>
 <td>Profile Go/Rust service with <code>pprof</code>/<code>perf</code></td>
 <td>Memory-profile Spark executor</td>
 <td>Analyze <code>/proc</code> for anomaly detection</td>
@@ -619,7 +559,7 @@
 </tr>
 <tr>
 <td><strong>Networking</strong></td>
-<td>VPC flow logs → Athena queries</td>
+<td>VPC/VNet flow logs → Athena/Log Analytics/BigQuery queries</td>
 <td><code>tcpdump</code> API latency; simulate packet loss</td>
 <td>Capture Kafka broker traffic</td>
 <td>MITM proxy for API inspection</td>
@@ -635,7 +575,7 @@
 </tr>
 <tr>
 <td><strong>Scripting</strong></td>
-<td>Python: Terraform plan parser</td>
+<td>Python: Terraform plan parser (multi-cloud)</td>
 <td>Bash: zero-downtime deploy script</td>
 <td>Python: Great Expectations data quality</td>
 <td>Python: cert expiry scanner</td>
@@ -643,7 +583,7 @@
 </tr>
 <tr>
 <td><strong>Git</strong></td>
-<td>Monorepo: Terraform + Helm + apps</td>
+<td>Monorepo: Terraform (AWS/Azure/GCP modules) + Helm + apps</td>
 <td>Trunk-based dev + feature flags</td>
 <td>dbt project: models as code</td>
 <td>Policy-as-code repo with PR gates</td>
@@ -651,7 +591,7 @@
 </tr>
 <tr>
 <td><strong>SQL</strong></td>
-<td>RDS Performance Insights query analysis</td>
+<td>RDS/Cloud SQL/Cloud SQL Performance Insights query analysis</td>
 <td><code>EXPLAIN ANALYZE</code> on slow queries</td>
 <td>dbt incremental models + partitioning</td>
 <td>Query audit logs for anomalies</td>
@@ -659,7 +599,7 @@
 </tr>
 <tr>
 <td><strong>Security</strong></td>
-<td>IAM least-privilege policies</td>
+<td>IAM/Entra ID/IAM least-privilege policies + conditions</td>
 <td>mTLS between services</td>
 <td>Column-level encryption + key rotation</td>
 <td>Threat model → mitigations → tests</td>
@@ -667,7 +607,7 @@
 </tr>
 <tr>
 <td><strong>Docs/Comm</strong></td>
-<td>Runbook: "EKS node stuck in NotReady"</td>
+<td>Runbook: "EKS/AKS/GKE node stuck in NotReady"</td>
 <td>ADR: "Why gRPC over REST"</td>
 <td>Data dictionary + lineage graph</td>
 <td>Incident postmortem template</td>
@@ -727,38 +667,13 @@
 <hr>
 <h2 id="7-30-day-starter-plans-by-pathway">7. 30-Day Starter Plans by Pathway<a class="headerlink" href="#7-30-day-starter-plans-by-pathway" title="Permanent link">&para;</a></h2>
 <p><em>Each assumes foundations are in progress (Week 1–2 overlap).</em></p>
-<h3 id="cloud-platform-engineering">Cloud &amp; Platform Engineering<a class="headerlink" href="#cloud-platform-engineering" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Week</th>
-<th>Focus</th>
-<th>Deliverable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>AWS/GCP/Azure free tier: VPC, subnets, IGW, NAT</td>
-<td>Terraform: deploy 3-tier VPC (public/private/data)</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Compute: EC2/VM → ASG → ALB</td>
-<td>Terraform: auto-scaling group with health checks</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Containers: Docker → ECR/Artifact Registry → ECS/Fargate</td>
-<td>Deploy containerized API with blue/green</td>
-</tr>
-<tr>
-<td>4</td>
-<td>K8s: Kind → EKS/GKE → Helm → ArgoCD</td>
-<td>GitOps-deployed cluster with monitoring (Prom/Grafana)</td>
-</tr>
-</tbody>
-</table>
+<h3 id="cloud-platform-engineering-multi-cloud-aws-azure-gcp">Cloud &amp; Platform Engineering (Multi-Cloud: AWS / Azure / GCP)<a class="headerlink" href="#cloud-platform-engineering-multi-cloud-aws-azure-gcp" title="Permanent link">&para;</a></h3>
+<p>|| Week | Focus | Deliverable (Pick One Cloud — Repeat for Others) ||
+|------|-------|---------------------------------------------------|
+| 1 | <strong>Networking</strong>: VPC/VNet, subnets, IGW/Internet Gateway, NAT Gateway/NAT Gateway | Terraform: 3-tier network (public/private/data) — <strong>AWS</strong>: VPC + IGW + NAT; <strong>Azure</strong>: VNet + Subnets + NAT Gateway; <strong>GCP</strong>: VPC + Cloud NAT |
+| 2 | <strong>Compute</strong>: VM/Instance → Scale Set/VMSS/Instance Group → Load Balancer | Terraform: auto-scaling group with health checks — <strong>AWS</strong>: ASG + ALB; <strong>Azure</strong>: VMSS + App Gateway; <strong>GCP</strong>: MIG + Cloud Load Balancing |
+| 3 | <strong>Containers</strong>: Docker → Registry (ECR/ACR/Artifact Registry) → Orchestrated (ECS/Fargate, Container Apps, Cloud Run) | Deploy containerized API with blue/green — <strong>AWS</strong>: ECS/Fargate + CodeDeploy; <strong>Azure</strong>: Container Apps + Deployment Slots; <strong>GCP</strong>: Cloud Run + Traffic Splitting |
+| 4 | <strong>Kubernetes</strong>: Kind → Managed K8s (EKS/AKS/GKE) → Helm → ArgoCD/Flux | GitOps-deployed cluster with monitoring — <strong>AWS</strong>: EKS + Prometheus/Grafana (AMP/AMG); <strong>Azure</strong>: AKS + Azure Monitor; <strong>GCP</strong>: GKE + Cloud Monitoring/Grafana Cloud |</p>
 <h3 id="backend-systems-engineering">Backend &amp; Systems Engineering<a class="headerlink" href="#backend-systems-engineering" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -823,38 +738,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="cybersecurity">Cybersecurity<a class="headerlink" href="#cybersecurity" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Week</th>
-<th>Focus</th>
-<th>Deliverable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Linux hardening: CIS benchmarks, <code>auditd</code>, <code>fail2ban</code></td>
-<td>Hardened VM + audit report</td>
-</tr>
-<tr>
-<td>2</td>
-<td>AppSec: OWASP Top 10, SAST/DAST, dependency scanning</td>
-<td>Secure code review + CI pipeline with <code>trivy</code>/<code>semgrep</code></td>
-</tr>
-<tr>
-<td>3</td>
-<td>Cloud security: IAM analysis, CSPM, CloudTrail</td>
-<td>Terraform: least-privilege roles + drift detection</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Incident response: tabletop, log analysis, forensics</td>
-<td>Runbook + simulated incident with timeline</td>
-</tr>
-</tbody>
-</table>
+<h3 id="cybersecurity-multi-cloud-focus">Cybersecurity (Multi-Cloud Focus)<a class="headerlink" href="#cybersecurity-multi-cloud-focus" title="Permanent link">&para;</a></h3>
+<p>|| Week | Focus | Deliverable (Implement on AWS + Azure + GCP) ||
+|------|-------|-------------|------------------------------------------------|
+| 1 | <strong>Identity &amp; Access</strong>: IAM/Entra ID/IAM — least privilege, conditions, boundary policies | Terraform: least-privilege roles with conditions — <strong>AWS</strong>: IAM policies + boundaries; <strong>Azure</strong>: Entra ID + RBAC + PIM; <strong>GCP</strong>: IAM conditions + VPC-SC |
+| 2 | <strong>Network Security</strong>: Security Groups/NSGs/Firewall, Private Link/Private Endpoint/Private Service Connect, WAF | Harden network — <strong>AWS</strong>: SG + VPC Endpoints + WAF; <strong>Azure</strong>: NSG + Private Endpoints + Front Door WAF; <strong>GCP</strong>: Firewall + PSC + Cloud Armor |
+| 3 | <strong>Data &amp; Workload Protection</strong>: KMS/Key Vault/KMS, Secrets Manager/Key Vault/Secret Manager, CSPM/Defender/Security Command Center | Secure pipeline + runtime — <strong>AWS</strong>: KMS + Secrets Manager + Security Hub; <strong>Azure</strong>: Key Vault + Defender for Cloud; <strong>GCP</strong>: KMS + Secret Manager + SCC |
+| 4 | <strong>Detection &amp; Response</strong>: CloudTrail/Activity Log/Cloud Audit Logs, SIEM (Sentinel/Splunk/Chronicle), IR runbooks | Simulated incident — <strong>AWS</strong>: CloudTrail + GuardDuty + IR runbook; <strong>Azure</strong>: Activity Log + Sentinel + playbook; <strong>GCP</strong>: Audit Logs + Chronicle + runbook |</p>
 <h3 id="full-stack-product-engineering">Full-Stack Product Engineering<a class="headerlink" href="#full-stack-product-engineering" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -907,8 +797,8 @@
 <td><em>The Linux Command Line</em> (Shotts); <code>linuxjourney.com</code>; <em>How Linux Works</em> (Ward)</td>
 </tr>
 <tr>
-<td><strong>Cloud</strong></td>
-<td>Cloud provider <em>Well-Architected Framework</em> docs; <em>Terraform Up &amp; Running</em> (Brikman); <em>Kubernetes the Hard Way</em> (Kelsey Hightower)</td>
+<td><strong>Cloud (Multi-Cloud)</strong></td>
+<td><strong>AWS</strong>: <em>Well-Architected Framework</em>; <em>Terraform Up &amp; Running</em> (Brikman); <strong>Azure</strong>: <em>Azure Well-Architected Framework</em>; <em>Azure for Architects</em> (Microsoft Learn); <strong>GCP</strong>: <em>Google Cloud Architecture Framework</em>; <em>GCP Well-Architected</em>; <em>Kubernetes the Hard Way</em> (Kelsey Hightower) — all clouds</td>
 </tr>
 <tr>
 <td><strong>Backend</strong></td>
@@ -946,8 +836,8 @@
 <td>Security hands-on</td>
 </tr>
 <tr>
-<td><strong>Cloud Sandboxes</strong> (AWS Skill Builder, Azure Learn, GCP Qwiklabs)</td>
-<td>Cloud labs</td>
+<td><strong>Cloud Sandboxes</strong> (AWS Skill Builder, Azure Learn / Microsoft Learn Sandbox, GCP Qwiklabs / Cloud Skills Boost)</td>
+<td><strong>Multi-cloud labs</strong> — rotate weekly across all three</td>
 </tr>
 <tr>
 <td><strong>Kaggle / DataTalks.Club</strong></td>
