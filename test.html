@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IT Career Compass - Offline Assessment</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:900px;margin:auto;padding:20px;background:#f3f6fa;color:#243247;line-height:1.6}
+header{background:#183454;color:white;padding:25px;border-radius:12px}
+section{background:white;padding:20px;margin:18px 0;border-radius:12px;border:1px solid #dce3ed}
+h1,h2{margin-top:0}
+.question{padding:12px 0;border-bottom:1px solid #ddd}
+label{display:block;margin:7px 0}
+input[type=text]{padding:9px;max-width:100%;border:1px solid #aaa;border-radius:5px}
+button{padding:12px 16px;margin:5px 5px 5px 0;background:#245b91;color:white;border:0;border-radius:7px;cursor:pointer}
+.secondary{background:#e4eaf2;color:#243247}
+.notice{padding:12px;background:#fff6df;border-radius:7px}
+.metric{background:#eef3f9;padding:12px;margin:8px 0;border-radius:8px}
+.small{color:#64748b;font-size:.9em}
+@media print{body{background:white}header{background:white;color:#183454}button,.no-print{display:none!important}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header>
+<h1>IT Career Compass</h1>
+<p>Offline IT Career Aptitude and Potential Assessment</p>
+<p>Explore your reasoning, learning potential, interests and possible IT career pathways.</p>
+</header>
+
+<section class="no-print">
+<h2>Candidate details</h2>
+<label>Name (optional): <input id="name" type="text" placeholder="Candidate name"></label>
+<p class="small">Suggested time: 35–50 minutes. No previous IT experience is required.</p>
+<div class="notice"><b>Important:</b> This is an exploratory prototype, not a validated psychometric test. It cannot guarantee success or rule out a career in IT.</div>
+</section>
+
+<form id="quiz" class="no-print">
+<section>
+<h2>Part A: Objective reasoning</h2>
+<p class="small">10 questions. One point per question. Select one answer unless instructed otherwise.</p>
+<div id="reasoning"></div>
+</section>
+
+<section>
+<h2>Part B: Learning potential</h2>
+<h3>Learn this rule</h3>
+<div class="notice">
+If a number is greater than 5, display PASS. Otherwise, display REVIEW.<br>
+Examples: 8 → PASS; 3 → REVIEW; 5 → REVIEW.
+</div>
+<h3>Stage 1: Initial understanding</h3>
+<div id="stage1"></div>
+<h3>Stage 2: Transfer to a new situation</h3>
+<div class="notice">A delivery weighing 10 kg or less goes in a VAN. A delivery weighing more than 10 kg goes in a TRUCK.</div>
+<div id="stage2"></div>
+<h3>Stage 3: After reviewing feedback</h3>
+<div class="notice">A support ticket waiting more than 4 hours is flagged LATE. Otherwise, it is flagged ON TIME.</div>
+<div id="stage3"></div>
+<p class="small">For a fair experiment, review the rule and any errors after the first two stages, then complete Stage 3.</p>
+</section>
+
+<section>
+<h2>Part C: Career interests</h2>
+<p>Rate each activity from 1 (strongly dislike) to 5 (strongly like).</p>
+<div id="interests"></div>
+</section>
+
+<section>
+<h2>Part D: Work approach</h2>
+<p>Rate how often each statement describes you. 1 = almost never; 5 = almost always.</p>
+<div id="work"></div>
+</section>
+
+<section>
+<button type="button" onclick="generateReport()">Calculate scores and create report</button>
+<button type="reset" class="secondary" onclick="document.getElementById('report').innerHTML=''">Reset assessment</button>
+</section>
+</form>
+
+<section id="report"></section>
+
+<script>
+const questions=[
+["What number comes next: 5, 10, 20, 40, __?",["45","60","80","100"],2],
+["Add 6 to 4, then multiply by 2. What is the result?",["14","20","16","28"],1],
+["Every URGENT request must be reviewed first. Request K is URGENT. What follows?",["K must be reviewed first","K is most difficult","K is completed","Every request is urgent"],0],
+["A device should be checked if its indicator is red. It is green. What follows from the rule alone?",["It is broken","It definitely works","The rule does not require a check based on colour","It will turn red"],2],
+["A website will not load. What is a useful first check?",["Replace the computer","Check the connection and other websites","Delete files","Change every setting"],1],
+["AB17, AB71, AB17, AB71. Which statement is correct?",["All are different","Two identifiers each appear twice","There is one identifier","All appear once"],1],
+["Select ALL good troubleshooting practices.",["Record the error message","Change one variable and test","Change many unrelated settings","Repeat tests and record results"],[0,1,3]],
+["R1 passes, R2 fails, R3 passes. A process stops at the first failure. Where does it stop?",["R1","R2","R3","Nowhere"],1],
+["Two events happen together. Does this alone prove one caused the other?",["Yes","No"],1],
+["If input is greater than 10, display HIGH; otherwise LOW. What happens for input 10?",["HIGH","LOW","Both","No output"],1]
+];
+
+const interests=[
+["Build a website, application or automated process.","build"],
+["Write instructions that make a computer perform a task.","build"],
+["Investigate why a device or application fails.","systems"],
+["Explore networks, operating systems or security.","systems"],
+["Analyse data to find trends.","data"],
+["Test products and identify defects.","data"],
+["Help someone resolve a technical problem.","people"],
+["Explain technical concepts to others.","people"],
+["Translate business needs into technology requirements.","business"],
+["Coordinate technology projects and communicate progress.","business"],
+["Configure or maintain computers and equipment.","hands"],
+["Find ways digital tools can improve practical work.","hands"]
+];
+
+const workItems=[
+"I check my work before completing a task.",
+"When an approach fails, I try to understand why.",
+"I can work through problems without immediate answers.",
+"I ask for clarification when instructions are unclear.",
+"I use feedback to improve my approach.",
+"I break complicated tasks into smaller steps."
+];
+
+const pathways={
+build:["Software and automation", "Software developer, web developer, automation trainee"],
+systems:["Systems and security","IT support, service desk, networking, security fundamentals"],
+data:["Data and quality","Data analyst, reporting assistant, software testing"],
+people:["People and technology","Technical support, IT training, user support"],
+business:["Business and delivery","Business analysis, IT implementation, project coordination"],
+hands:["Devices and infrastructure","Hardware support, field support, infrastructure support"]
+};
+
+function addQuestion(container,id,title,options,multi=false){
+ const root=document.getElementById(container);
+ const box=document.createElement("div");
+ box.className="question";
+ const p=document.createElement("p");
+ p.textContent=title;
+ box.appendChild(p);
+ options.forEach((opt,i)=>{
+  const label=document.createElement("label");
+  const input=document.createElement("input");
+  input.type=multi?"checkbox":"radio";
+  input.name=id;
+  input.value=i;
+  label.append(input,document.createTextNode(" "+opt));
+  box.appendChild(label);
+ });
+ root.appendChild(box);
+}
+
+questions.forEach((q,i)=>addQuestion("reasoning","r"+i,(i+1)+". "+q[0],q[1],i===6));
+
+[
+["stage1",[
+["l1","Input 7",["PASS","REVIEW"]],
+["l2","Input 2",["PASS","REVIEW"]],
+["l3","Input 5",["PASS","REVIEW"]]
+]],
+["stage2",[
+["l4","Weight 8 kg",["VAN","TRUCK"]],
+["l5","Weight 10 kg",["VAN","TRUCK"]],
+["l6","Weight 12 kg",["VAN","TRUCK"]]
+]],
+["stage3",[
+["l7","Ticket waiting 2 hours",["LATE","ON TIME"]],
+["l8","Ticket waiting 4 hours",["LATE","ON TIME"]],
+["l9","Ticket waiting 6 hours",["LATE","ON TIME"]]
+]]
+].forEach(([container,items])=>items.forEach(([id,title,opts])=>addQuestion(container,id,title,opts)));
+
+interests.forEach((item,i)=>addQuestion("interests","i"+i,(i+1)+". "+item[0],["1 - Strongly dislike","2 - Dislike","3 - Neutral","4 - Like","5 - Strongly like"]));
+workItems.forEach((item,i)=>addQuestion("work","w"+i,(i+1)+". "+item,["1 - Almost never","2 - Rarely","3 - Sometimes","4 - Often","5 - Almost always"]));
+
+function answer(id){
+ const el=document.querySelector('input[name="'+id+'"]:checked');
+ return el?Number(el.value):null;
+}
+function average(arr){return arr.length?arr.reduce((a,b)=>a+b,0)/arr.length:null}
+function pct(x){return x===null?"Incomplete":Math.round(x)+"%"}
+function generateReport(){
+ let correct=0,answered=0;
+ questions.forEach((q,i)=>{
+  let got;
+  if(i===6)got=[...document.querySelectorAll('input[name="r6"]:checked')].map(x=>+x.value).sort();
+  else {const a=answer("r"+i);got=a===null?[]:[a]}
+  if(got.length)answered++;
+  const expected=Array.isArray(q[2])?q[2]:[q[2]];
+  if(got.length===expected.length&&got.every((v,j)=>v===expected[j]))correct++;
+ });
+ const reasoning=answered===10?correct/10*100:null;
+
+ const keys=["l1","l2","l3","l4","l5","l6","l7","l8","l9"];
+ const expected=[0,1,1,0,0,1,1,1,0];
+ const stages=[keys.slice(0,3),keys.slice(3,6),keys.slice(6,9)];
+ const stageScores=stages.map((ids,s)=>ids.reduce((n,id)=>{
+  const a=answer(id);
+  return n+(a===null?0:Number(a===expected[s*3+ids.indexOf(id)]));
+ },0));
+ const learnAnswered=keys.filter(k=>answer(k)!==null).length;
+ const learning=learnAnswered===9?stageScores.reduce((a,b)=>a+b,0)/9*100:null;
+
+ const ratings=interests.map((_,i)=>answer("i"+i));
+ const interestsAnswered=ratings.filter(x=>x!==null).length;
+ const interestScore=interestsAnswered===12?
+  (ratings.reduce((s,v)=>s+(v===null?0:v+1),0)-12)/48*100:null;
+
+ const groups={};
+ Object.keys(pathways).forEach(k=>{
+  const vals=interests.map((it,i)=>it[1]===k?ratings[i]:null)
+   .filter(v=>v!==null).map(v=>v+1);
+  groups[k]=average(vals);
+ });
+ const ranked=Object.keys(groups).sort((a,b)=>(groups[b]??0)-(groups[a]??0));
+
+ const w=workItems.map((_,i)=>answer("w"+i)).filter(v=>v!==null).map(v=>v+1);
+ const workMean=average(w);
+ const workScore=workMean===null?null:(workMean-1)/4*100;
+
+ const complete=reasoning!==null&&learning!==null&&interestScore!==null&&work.length===6;
+ const composite=complete?0.3*reasoning+0.3*learning+0.25*interestScore+0.15*workScore:null;
+ const name=document.getElementById("name").value.trim()||"Candidate";
+
+ let html=`<h2>IT Career Potential Report</h2><p><b>Candidate:</b> ${escapeHtml(name)}<br><b>Date:</b> ${new Date().toLocaleDateString()}</p>`;
+ html+=`<div class="metric"><b>Objective reasoning:</b> ${pct(reasoning)} (${correct}/10 correct; ${answered}/10 answered)</div>`;
+ html+=`<div class="metric"><b>Learning experiment:</b> ${pct(learning)}. Stage scores: ${stageScores.join(", ")} out of 3.</div>`;
+ html+=`<div class="metric"><b>Interest ratings:</b> ${interestsAnswered}/12 completed. ${pct(interestScore)}</div>`;
+ html+=`<div class="metric"><b>Work approach:</b> ${w.length}/6 answered. ${pct(workScore)}</div>`;
+ html+=`<h3>Learning observations</h3><p>Initial understanding: ${stageScores[0]}/3. Transfer: ${stageScores[1]}/3. After feedback: ${stageScores[2]}/3. Review both errors and improvements; the tasks are not identical.</p>`;
+
+ if(composite!==null)html+=`<h3>Provisional combined score: ${pct(composite)}</h3><p>This prototype score is not a probability of succeeding in IT.</p>`;
+ else html+=`<p class="notice">Complete all sections for a combined score. Available results are shown separately.</p>`;
+
+ html+="<h3>Career pathway suggestions</h3>";
+ if(interestsAnswered){
+  ranked.slice(0,3).forEach(k=>{
+   html+=`<div class="metric"><b>${pathways[k][0]}</b> — Interest rating: ${groups[k]===null?"Not available":groups[k].toFixed(1)+"/5"}<br>${pathways[k][1]}</div>`;
+  });
+ }else html+="<p>Complete the interest questionnaire to see pathway suggestions.</p>";
+
+ html+=`<h3>Suggested 30-day plan</h3><ol><li>Week 1: Try a beginner lesson in your highest-interest area.</li><li>Week 2: Complete a small hands-on project.</li><li>Week 3: Try a second IT pathway.</li><li>Week 4: Review enjoyment, progress, challenges and feedback before deciding your next step.</li></ol>`;
+
+ html+=`<h3>Important limitations</h3><p>This is an exploratory, unvalidated prototype. It cannot diagnose ability or definitively determine career suitability. Results may be affected by prior learning opportunities, language, accessibility and test conditions. Do not use this report alone for recruitment, admissions or other high-stakes decisions.</p>`;
+ html+=`<p class="small">The assessment runs locally in this browser. Save or print the report before resetting the form.</p>`;
+ html+=`<button onclick="window.print()">Print / Save as PDF</button> <button onclick="downloadReport()">Download report as text</button>`;
+ document.getElementById("report").innerHTML=html;
+ document.getElementById("report").scrollIntoView({behavior:"smooth"});
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function downloadReport(){
+ const text=document.getElementById("report").innerText;
+ const url=URL.createObjectURL(new Blob([text],{type:"text/plain;charset=utf-8"}));
+ const a=document.createElement("a");a.href=url;a.download="IT-Career-Compass-Report.txt";a.click();
+ URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
